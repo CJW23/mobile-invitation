@@ -62,3 +62,4 @@ python3 -m http.server 8777
 카카오맵(카카오/네이버/티맵 버튼) · 오시는 길 · 안내 탭(포토부스/주차/답례품) ·
 계좌 복사 · 연락하기(전화·문자) · 카카오톡 공유 · 배경음악(선택)
 # mobile-invitation
+# mobile-invitation
