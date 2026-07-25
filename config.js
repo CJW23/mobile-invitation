@@ -20,11 +20,20 @@ window.WEDDING_CONFIG = {
     relation: "딸",
   },
 
+  // ── 연락하기 (전화·문자) ───────────────────────────────
+  //  비워두거나 목록이 없으면 연락하기 섹션이 숨겨집니다.
+  contacts: [
+    { role: "신랑 아버지", name: "최현수", phone: "010-6432-4680" },
+    { role: "신랑 어머니", name: "이은경", phone: "010-8332-4680" },
+    { role: "신부 아버지", name: "오종래", phone: "010-5325-2203" },
+    { role: "신부 어머니", name: "권영란", phone: "010-3423-2003" },
+  ],
+
   // ── 예식 일시/장소 ─────────────────────────────────────
   wedding: {
     // YYYY, MM(1~12), DD, HH(24시), MM
-    year: 2027, month: 1, day: 9, hour: 12, minute: 0,
-    dateText: "2027년 1월 9일 토요일 낮 12시",
+    year: 2027, month: 1, day: 9, hour: 12, minute: 30,
+    dateText: "2027년 1월 9일 토요일 낮 12시 30분",
     hallName: "라마다 서울 신도림 호텔 2층 그랜드볼룸홀",
     hallAddress: "서울 구로구 경인로 624",
     // 카카오맵 좌표 (식장 위치)
@@ -63,7 +72,7 @@ window.WEDDING_CONFIG = {
   // ── 마음 전하실 곳 (계좌) ──────────────────────────────
   accounts: {
     groom: [
-      { label: "신랑", bank: "국민은행", number: "994114680", holder: "최재우" },
+      { label: "신랑", bank: "국민은행", number: "99411468060", holder: "최재우" },
     ],
     bride: [
       { label: "신부", bank: "신한은행", number: "110-433-460480", holder: "오혜연" },

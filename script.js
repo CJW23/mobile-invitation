@@ -279,10 +279,12 @@
 
   /* ═══════ 연락하기 ═══════ */
   function renderContact() {
-    const list = [
+    // config.contacts 우선, 없으면 신랑·신부 기본
+    const source = (C.contacts && C.contacts.length) ? C.contacts : [
       { role: "신랑", name: C.groom.name, phone: C.groom.phone },
       { role: "신부", name: C.bride.name, phone: C.bride.phone },
-    ].filter((p) => p.phone && p.phone.trim());
+    ];
+    const list = source.filter((p) => p.phone && p.phone.trim());
 
     // 유효한 연락처가 없으면 연락하기 섹션 숨김
     if (!list.length) {
