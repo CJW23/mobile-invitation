@@ -282,7 +282,14 @@
     const list = [
       { role: "신랑", name: C.groom.name, phone: C.groom.phone },
       { role: "신부", name: C.bride.name, phone: C.bride.phone },
-    ];
+    ].filter((p) => p.phone && p.phone.trim());
+
+    // 유효한 연락처가 없으면 연락하기 섹션 숨김
+    if (!list.length) {
+      const sec = $("#contact");
+      if (sec) sec.style.display = "none";
+      return;
+    }
     $("#contactGrid").innerHTML = list.map((p) => `
       <div class="contact__card">
         <div class="contact__who">
