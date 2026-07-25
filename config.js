@@ -4,7 +4,7 @@
 window.WEDDING_CONFIG = {
   // ── 기본 정보 ──────────────────────────────────────────
   groom: {
-    name: "김민준",
+    name: "최재우",
     phone: "010-1234-5678",
     father: "김아버지",
     mother: "이어머니",
@@ -12,7 +12,7 @@ window.WEDDING_CONFIG = {
     relation: "아들",
   },
   bride: {
-    name: "이서연",
+    name: "오혜연",
     phone: "010-8765-4321",
     father: "이아버지",
     mother: "박어머니",
@@ -62,12 +62,12 @@ window.WEDDING_CONFIG = {
   // ── 마음 전하실 곳 (계좌) ──────────────────────────────
   accounts: {
     groom: [
-      { label: "신랑", bank: "카카오뱅크", number: "3333-01-1234567", holder: "김민준" },
+      { label: "신랑", bank: "카카오뱅크", number: "3333-01-1234567", holder: "최재우" },
       { label: "신랑 아버지", bank: "국민은행", number: "123-45-678901", holder: "김아버지" },
       { label: "신랑 어머니", bank: "신한은행", number: "110-234-567890", holder: "이어머니" },
     ],
     bride: [
-      { label: "신부", bank: "토스뱅크", number: "1000-12-3456789", holder: "이서연" },
+      { label: "신부", bank: "토스뱅크", number: "1000-12-3456789", holder: "오혜연" },
       { label: "신부 아버지", bank: "우리은행", number: "1002-345-678901", holder: "이아버지" },
       { label: "신부 어머니", bank: "농협은행", number: "302-1234-5678-91", holder: "박어머니" },
     ],
