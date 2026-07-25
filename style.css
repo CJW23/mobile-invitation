@@ -42,6 +42,61 @@ img { max-width: 100%; display: block; }
 }
 
 /* ═══════════════════════════════════════════════
+   인트로 — 닫혔다 열리는 청첩장
+   ═══════════════════════════════════════════════ */
+.intro {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; cursor: pointer;
+}
+.intro__door {
+  position: absolute; top: 0; bottom: 0; width: 50.5%; z-index: 1;
+  background: linear-gradient(160deg, #fdfbf7 0%, #f4efe6 55%, #ece4d6 100%);
+  transition: transform 1.15s cubic-bezier(.76, 0, .18, 1);
+  transition-delay: .35s;
+}
+.intro__door--left  { left: 0;  box-shadow: inset -1px 0 0 rgba(184,164,140,.5), 12px 0 30px rgba(120,100,75,.06); }
+.intro__door--right { right: 0; box-shadow: inset 1px 0 0 rgba(184,164,140,.5), -12px 0 30px rgba(120,100,75,.06); }
+.intro__content {
+  position: relative; z-index: 2; text-align: center; padding: 0 30px;
+  color: #8a7d6c;
+  transition: opacity .55s ease, transform .55s ease;
+}
+.intro__overline {
+  font-family: var(--script);
+  font-size: 12px; letter-spacing: .42em; text-transform: uppercase;
+  color: var(--accent-dk); margin-bottom: 22px; opacity: .85;
+}
+.intro__names {
+  font-family: var(--script);
+  font-weight: 500; font-size: 30px; line-height: 1.7;
+  letter-spacing: .12em; color: #6f6353;
+}
+.intro__amp { display: block; font-style: italic; font-size: 18px; color: var(--accent); margin: 2px 0; }
+.intro__seal { margin: 30px auto; width: 96px; height: 96px; filter: drop-shadow(0 8px 16px rgba(150,130,100,.28)); }
+.intro__seal svg { width: 100%; height: 100%; display: block; }
+.intro__date {
+  margin-top: 30px; font-family: var(--script);
+  font-size: 16px; letter-spacing: .16em; color: #7d7160;
+}
+.intro__venue { margin-top: 8px; font-size: 12.5px; letter-spacing: .08em; color: #a99e8c; }
+.intro__hint {
+  margin-top: 40px; font-size: 11.5px; letter-spacing: .14em; color: #b7ac99;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+@keyframes hintPulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+
+/* 열림 */
+.intro.opening .intro__door--left  { transform: translateX(-101%); }
+.intro.opening .intro__door--right { transform: translateX(101%); }
+.intro.opening .intro__content { opacity: 0; transform: scale(.93); transition-delay: 0s; }
+.intro.done { display: none; }
+
+/* 커버 워딩: 인트로가 열린 뒤에 써지도록 대기 */
+.cover__line { animation-play-state: paused; }
+body.opened .cover__line { animation-play-state: running; }
+
+/* ═══════════════════════════════════════════════
    커버
    ═══════════════════════════════════════════════ */
 .cover {

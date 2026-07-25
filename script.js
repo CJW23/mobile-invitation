@@ -376,8 +376,51 @@
     $$(".reveal").forEach((el) => io.observe(el));
   }
 
+  /* ═══════ 인트로 (닫혔다 열리는 청첩장) ═══════ */
+  function sealSVG() {
+    let lines = "";
+    for (let i = 0; i < 24; i++) {
+      const a = (i * 15) * Math.PI / 180;
+      const x1 = (60 + Math.cos(a) * 16).toFixed(1), y1 = (60 + Math.sin(a) * 16).toFixed(1);
+      const x2 = (60 + Math.cos(a) * 43).toFixed(1), y2 = (60 + Math.sin(a) * 43).toFixed(1);
+      lines += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
+    }
+    return `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="sealG" cx="50%" cy="38%" r="65%">
+        <stop offset="0" stop-color="#fffefb"/><stop offset="1" stop-color="#d8cebd"/>
+      </radialGradient></defs>
+      <circle cx="60" cy="60" r="47" fill="url(#sealG)" stroke="#c7bca7" stroke-width="1.5"/>
+      <g stroke="#bcae95" stroke-width="1" stroke-linecap="round" opacity="0.8">${lines}</g>
+      <circle cx="60" cy="60" r="14" fill="#f1ebdf" stroke="#c7bca7" stroke-width="1.2"/>
+    </svg>`;
+  }
+  function initIntro() {
+    const intro = $("#intro");
+    if (!intro) { document.body.classList.add("opened"); return; }
+
+    $("#introGroom").textContent = C.groom.name;
+    $("#introBride").textContent = C.bride.name;
+    const w = C.wedding;
+    const dow = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"][new Date(w.year, w.month - 1, w.day).getDay()];
+    $("#introDate").textContent = `${w.year}.${pad(w.month)}.${pad(w.day)}  ${dow}  ${pad(w.hour)}:${pad(w.minute)}`;
+    $("#introVenue").textContent = w.hallName;
+    $("#introSeal").innerHTML = sealSVG();
+
+    let opened = false;
+    const open = () => {
+      if (opened) return;
+      opened = true;
+      intro.classList.add("opening");
+      document.body.classList.add("opened");     // 커버 글씨 써지기 시작
+      setTimeout(() => intro.classList.add("done"), 1700);
+    };
+    intro.addEventListener("click", open);
+    setTimeout(open, 2200);                        // 잠시 닫힌 채 보여준 뒤 자동 열림
+  }
+
   /* ═══════ 초기화 ═══════ */
   document.addEventListener("DOMContentLoaded", () => {
+    initIntro();
     renderCover();
     renderGreeting();
     renderCalendar();
